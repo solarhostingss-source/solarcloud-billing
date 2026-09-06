@@ -16,6 +16,9 @@
 }
 
 body {
+  background: 
+    radial-gradient(circle at 50% -20%, rgba(0, 212, 255, 0.15) 0%, rgba(10, 10, 12, 1) 60%),
+    url('../img/hero_bg.png') no-repeat center top / cover fixed;
   background-color: var(--bg-color);
   color: var(--text-primary);
   font-family: var(--font-family);
