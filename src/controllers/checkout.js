@@ -10,12 +10,11 @@ module.exports = async (req, res) => {
     }
     
     const nodeId = location === 'colombia' ? process.env.NODE_COLOMBIA : process.env.NODE_USA;
-    const auth = Buffer.from(`${process.env.TEBEX_PUBLIC_TOKEN}:${process.env.TEBEX_PRIVATE_KEY}`).toString('base64');
     
-    const basketRes = await fetch('https://headless.tebex.io/api/accounts/baskets', {
+    // 1. Create Basket
+    const basketRes = await fetch(`https://headless.tebex.io/api/accounts/${process.env.TEBEX_PUBLIC_TOKEN}/baskets`, {
       method: 'POST',
       headers: {
-        'Authorization': `Basic ${auth}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
@@ -25,22 +24,26 @@ module.exports = async (req, res) => {
       })
     });
     
-    const basketData = await basketRes.json();
-    const basketIdent = basketData.ident;
+    const basketResData = await basketRes.json();
+    const basketIdent = basketResData.data.ident;
     
+    // 2. Add Package to Basket
+    let checkoutUrl = '';
     if (planConfig.tebexPackageId) {
-      await fetch(`https://headless.tebex.io/api/baskets/${basketIdent}/packages`, {
+      const pkgRes = await fetch(`https://headless.tebex.io/api/baskets/${basketIdent}/packages`, {
         method: 'POST',
         headers: {
-          'Authorization': `Basic ${auth}`,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({ package_id: planConfig.tebexPackageId })
       });
+      const pkgData = await pkgRes.json();
+      checkoutUrl = pkgData.data.links.checkout;
     }
     
-    res.json({ basketIdent, checkoutUrl: basketData.links.checkout });
+    res.json({ basketIdent, checkoutUrl });
   } catch (error) {
+    console.error(error);
     res.status(500).json({ error: 'Checkout error' });
   }
 };

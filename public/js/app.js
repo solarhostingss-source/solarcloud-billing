@@ -58,8 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (response.ok) {
           const data = await response.json();
-          if (data.basketIdent && typeof Tebex !== 'undefined') {
-            Tebex.checkout.init({ ident: data.basketIdent });
+          if (data.checkoutUrl) {
+            window.location.href = data.checkoutUrl;
           }
         }
       } catch (error) {
