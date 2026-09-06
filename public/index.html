@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solar Cloud Billing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://js.tebex.io/v/tebex.js"></script>
+</head>
+<body class="fade-in">
+  <header class="navbar">
+    <nav class="nav-container">
+      <div class="logo">
+        <span class="emoji">☀️</span>
+        <a href="https://solarcloud.lat" class="logo-text">Solar Cloud</a>
+      </div>
+      <div class="nav-links">
+        <a href="https://solarcloud.lat">Home</a>
+        <a href="https://panel.solarcloud.lat" class="nav-button">Panel</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero reveal">
+      <h1 class="hero-title">Welcome to <span class="gradient-text">Solar Cloud</span> Billing</h1>
+      <p class="hero-subtitle">High-performance game server hosting. AMD Ryzen 5 5600 · NVMe SSD · DDoS Protection</p>
+      <a href="#plans" class="cta-button smooth-scroll">Browse Plans</a>
+    </section>
+
+    <section id="plans" class="plans-section reveal">
+      <div class="section-container">
+        <h2 class="section-title">Minecraft Server Plans</h2>
+        <div class="plans-grid">
+          
+          <div class="plan-card">
+            <h3 class="plan-name">Vanguard</h3>
+            <div class="plan-price">$5.50<span class="period">/mo</span></div>
+            <ul class="plan-specs">
+              <li><i data-lucide="cpu"></i> 2 vCPU</li>
+              <li><i data-lucide="memory-stick"></i> 4 GB RAM</li>
+              <li><i data-lucide="hard-drive"></i> 10 GB NVMe SSD</li>
+              <li><i data-lucide="shield-check"></i> DDoS Protection</li>
+              <li><i data-lucide="zap"></i> Instant Setup</li>
+            </ul>
+            <select class="location-select" aria-label="Select Location">
+              <option value="colombia">Colombia</option>
+              <option value="usa">USA</option>
+            </select>
+            <button class="buy-button" data-plan="vanguard">Buy Now</button>
+          </div>
+
+          <div class="plan-card">
+            <h3 class="plan-name">Invader</h3>
+            <div class="plan-price">$8.00<span class="period">/mo</span></div>
+            <ul class="plan-specs">
+              <li><i data-lucide="cpu"></i> 4 vCPU</li>
+              <li><i data-lucide="memory-stick"></i> 6 GB RAM</li>
+              <li><i data-lucide="hard-drive"></i> 25 GB NVMe SSD</li>
+              <li><i data-lucide="shield-check"></i> DDoS Protection</li>
+              <li><i data-lucide="zap"></i> Instant Setup</li>
+            </ul>
+            <select class="location-select" aria-label="Select Location">
+              <option value="colombia">Colombia</option>
+              <option value="usa">USA</option>
+            </select>
+            <button class="buy-button" data-plan="invader">Buy Now</button>
+          </div>
+
+          <div class="plan-card popular">
+            <div class="popular-badge">Popular</div>
+            <h3 class="plan-name">Starter</h3>
+            <div class="plan-price">$10.00<span class="period">/mo</span></div>
+            <ul class="plan-specs">
+              <li><i data-lucide="cpu"></i> 4 vCPU</li>
+              <li><i data-lucide="memory-stick"></i> 8 GB RAM</li>
+              <li><i data-lucide="hard-drive"></i> 35 GB NVMe SSD</li>
+              <li><i data-lucide="star"></i> VIP Setup</li>
+              <li><i data-lucide="shield-check"></i> DDoS Protection</li>
+              <li><i data-lucide="zap"></i> Instant Setup</li>
+            </ul>
+            <select class="location-select" aria-label="Select Location">
+              <option value="colombia">Colombia</option>
+              <option value="usa">USA</option>
+            </select>
+            <button class="buy-button" data-plan="starter">Buy Now</button>
+          </div>
+
+          <div class="plan-card">
+            <h3 class="plan-name">Astronaut</h3>
+            <div class="plan-price">$12.00<span class="period">/mo</span></div>
+            <ul class="plan-specs">
+              <li><i data-lucide="cpu"></i> 5 vCPU</li>
+              <li><i data-lucide="memory-stick"></i> 9 GB RAM</li>
+              <li><i data-lucide="hard-drive"></i> 50 GB NVMe SSD</li>
+              <li><i data-lucide="shield-check"></i> DDoS Protection</li>
+              <li><i data-lucide="zap"></i> Instant Setup</li>
+            </ul>
+            <select class="location-select" aria-label="Select Location">
+              <option value="colombia">Colombia</option>
+              <option value="usa">USA</option>
+            </select>
+            <button class="buy-button" data-plan="astronaut">Buy Now</button>
+          </div>
+
+          <div class="plan-card">
+            <h3 class="plan-name">Scientist</h3>
+            <div class="plan-price">$20.00<span class="period">/mo</span></div>
+            <ul class="plan-specs">
+              <li><i data-lucide="cpu"></i> 8 vCPU</li>
+              <li><i data-lucide="memory-stick"></i> 16 GB RAM</li>
+              <li><i data-lucide="hard-drive"></i> 100 GB NVMe SSD</li>
+              <li><i data-lucide="shield-check"></i> DDoS Protection</li>
+              <li><i data-lucide="zap"></i> Instant Setup</li>
+            </ul>
+            <select class="location-select" aria-label="Select Location">
+              <option value="colombia">Colombia</option>
+              <option value="usa">USA</option>
+            </select>
+            <button class="buy-button" data-plan="scientist">Buy Now</button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="bot-plans-section reveal">
+      <div class="section-container">
+        <h2 class="section-title">Bot Hosting Plans</h2>
+        <div class="plans-grid bots-grid">
+          
+          <div class="plan-card">
+            <h3 class="plan-name">Spark</h3>
+            <div class="plan-price">$2.50<span class="period">/mo</span></div>
+            <ul class="plan-specs">
+              <li><i data-lucide="cpu"></i> 1 vCPU</li>
+              <li><i data-lucide="memory-stick"></i> 1 GB RAM</li>
+            </ul>
+            <button class="buy-button" data-plan="spark">Buy Now</button>
+          </div>
+
+          <div class="plan-card">
+            <h3 class="plan-name">Reactor</h3>
+            <div class="plan-price">$4.50<span class="period">/mo</span></div>
+            <ul class="plan-specs">
+              <li><i data-lucide="cpu"></i> 2 vCPU</li>
+              <li><i data-lucide="memory-stick"></i> 2 GB RAM</li>
+            </ul>
+            <button class="buy-button" data-plan="reactor">Buy Now</button>
+          </div>
+
+          <div class="plan-card">
+            <h3 class="plan-name">Matrix</h3>
+            <div class="plan-price">$7.50<span class="period">/mo</span></div>
+            <ul class="plan-specs">
+              <li><i data-lucide="cpu"></i> 4 vCPU</li>
+              <li><i data-lucide="memory-stick"></i> 4 GB RAM</li>
+            </ul>
+            <button class="buy-button" data-plan="matrix">Buy Now</button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-section reveal">
+      <div class="section-container">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div class="faq-accordion">
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Where are your servers located?</span>
+              <i data-lucide="plus" class="faq-icon"></i>
+            </button>
+            <div class="faq-answer">
+              <p>We offer server locations in both Colombia and the USA. You can select your preferred location during the checkout process.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How long does setup take?</span>
+              <i data-lucide="plus" class="faq-icon"></i>
+            </button>
+            <div class="faq-answer">
+              <p>All our plans come with instant setup. Your server will be provisioned and ready to use immediately after your payment is confirmed.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Do you provide DDoS protection?</span>
+              <i data-lucide="plus" class="faq-icon"></i>
+            </button>
+            <div class="faq-answer">
+              <p>Yes, all of our Minecraft hosting plans include advanced DDoS protection to ensure your server stays online during attacks.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Can I upgrade my plan later?</span>
+              <i data-lucide="plus" class="faq-icon"></i>
+            </button>
+            <div class="faq-answer">
+              <p>Absolutely. You can easily upgrade your plan at any time through our billing panel, and your data will remain intact.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2024 Solar Cloud. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="mailto:solarhostingss@gmail.com"><i data-lucide="mail"></i> solarhostingss@gmail.com</a>
+        <a href="https://discord.gg/solarcloud"><i data-lucide="message-square"></i> Discord</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
