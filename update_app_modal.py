@@ -1,41 +1,46 @@
-document.addEventListener('DOMContentLoaded', () => {
-  lucide.createIcons();
+import re
 
-  const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.15
-  };
+with open('public/js/app.js', 'r') as f:
+    js = f.read()
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('active');
-        observer.unobserve(entry.target);
+# Replace the click listener on .buy-button
+old_click = """  document.querySelectorAll('.buy-button').forEach(button => {
+    button.addEventListener('click', async (e) => {
+      const btn = e.target;
+      const plan = btn.getAttribute('data-plan');
+      const card = btn.closest('.plan-card');
+      const select = card.querySelector('.location-select');
+      const location = select ? select.value : 'default';
+
+      const originalText = btn.textContent;
+      btn.textContent = 'Processing...';
+      btn.disabled = true;
+
+      try {
+        const response = await fetch('/api/checkout', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ plan, location })
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          if (data.checkoutUrl) {
+            window.location.href = data.checkoutUrl;
+          }
+        }
+      } catch (error) {
+        console.error(error);
+      } finally {
+        btn.textContent = originalText;
+        btn.disabled = false;
       }
     });
-  }, observerOptions);
+  });"""
 
-  document.querySelectorAll('.reveal').forEach(el => {
-    observer.observe(el);
-  });
-
-  document.querySelectorAll('.faq-question').forEach(button => {
-    button.addEventListener('click', () => {
-      const faqItem = button.parentElement;
-      const isOpen = faqItem.classList.contains('open');
-      
-      document.querySelectorAll('.faq-item').forEach(item => {
-        item.classList.remove('open');
-      });
-
-      if (!isOpen) {
-        faqItem.classList.add('open');
-      }
-    });
-  });
-
-  const modal = document.getElementById('checkoutModal');
+new_click = """  const modal = document.getElementById('checkoutModal');
   const closeModal = document.getElementById('closeModal');
   const checkoutForm = document.getElementById('checkoutForm');
   const confirmBtn = document.getElementById('confirmCheckoutBtn');
@@ -70,7 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const username = document.getElementById('username').value;
     const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
 
     const originalText = confirmBtn.textContent;
     confirmBtn.textContent = 'Processing...';
@@ -82,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ plan: currentPlan, location: currentLocation, username, email, password })
+        body: JSON.stringify({ plan: currentPlan, location: currentLocation, username, email })
       });
 
       if (response.ok) {
@@ -100,19 +104,9 @@ document.addEventListener('DOMContentLoaded', () => {
       confirmBtn.textContent = originalText;
       confirmBtn.disabled = false;
     }
-  });
+  });"""
 
-  document.querySelectorAll('.smooth-scroll').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const targetId = this.getAttribute('href');
-      const targetElement = document.querySelector(targetId);
-      if (targetElement) {
-        window.scrollTo({
-          top: targetElement.offsetTop - 80,
-          behavior: 'smooth'
-        });
-      }
-    });
-  });
-});
+js = js.replace(old_click, new_click)
+
+with open('public/js/app.js', 'w') as f:
+    f.write(js)

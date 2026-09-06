@@ -2,7 +2,7 @@ const plans = require('../config/plans');
 
 module.exports = async (req, res) => {
   try {
-    const { plan, location, username, email } = req.body;
+    const { plan, location, username, email, password } = req.body;
     const planConfig = plans[plan];
     
     if (!planConfig) {
@@ -21,7 +21,7 @@ module.exports = async (req, res) => {
         email: req.body.email,
         complete_url: 'https://billing.solarcloud.lat?status=complete',
         cancel_url: 'https://billing.solarcloud.lat?status=cancel',
-        custom: { plan, location, nodeId, username: req.body.username, email: req.body.email }
+        custom: { plan, location, nodeId, username: req.body.username, email: req.body.email, password: req.body.password }
       })
     });
     

@@ -1,8 +1,8 @@
 const crypto = require('crypto');
 
-async function createUser(email, providedUsername) {
+async function createUser(email, providedUsername, providedPassword) {
   const username = providedUsername || email.split('@')[0] + '_' + Date.now().toString(36);
-  const password = crypto.randomBytes(16).toString('hex');
+  const password = providedPassword || crypto.randomBytes(16).toString('hex');
   const url = `${process.env.PTERODACTYL_URL}/api/application/users`;
   const headers = {
     'Authorization': `Bearer ${process.env.PTERODACTYL_API_KEY}`,
