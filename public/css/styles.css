@@ -578,58 +578,85 @@ footer {
     color: #FAFAFA;
 }
 
-/* --- 3D CONTACT DOCK (MECHANICAL KEYS) --- */
+/* --- 3D CONTACT DOCK (EXPANDABLE) --- */
 .contact-dock {
     position: fixed;
     right: 2rem;
     bottom: 2rem;
     display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    flex-direction: row;
+    gap: 1rem;
     z-index: 9998;
     perspective: 1000px;
 }
 .mech-key {
     display: block;
-    width: 60px;
-    height: 60px;
+    height: 50px;
     background: #000;
     border-radius: 8px;
     text-decoration: none;
     position: relative;
     transform-style: preserve-3d;
-    transition: transform 0.1s;
-    box-shadow: 0 8px 0 #27272A, 0 15px 20px rgba(0,0,0,0.5);
+    box-shadow: 0 6px 0 #27272A, 0 10px 15px rgba(0,0,0,0.5);
+    border: none;
+    outline: none;
 }
 .mech-key .key-face {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
     height: 100%;
+    padding: 0 14px;
     background: #131316;
     border: 1px solid #27272A;
     border-radius: 6px;
     color: #A1A1AA;
-    font-family: monospace;
-    font-size: 0.75rem;
+    transform: translateY(-6px);
+    transition: transform 0.1s, color 0.2s, border-color 0.2s, padding 0.3s ease;
+    overflow: hidden;
+}
+.key-icon {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    transition: fill 0.2s;
+}
+.key-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
     font-weight: bold;
-    transform: translateY(-8px);
-    transition: transform 0.1s, color 0.2s, border-color 0.2s;
+    max-width: 0;
+    opacity: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: max-width 0.3s ease, opacity 0.2s ease 0.1s, margin-left 0.3s ease;
+    margin-left: 0;
 }
 .mech-key:hover .key-face {
     color: #FFB800;
     border-color: #FFB800;
+    padding: 0 20px;
+}
+.mech-key:hover .key-text {
+    max-width: 100px;
+    opacity: 1;
+    margin-left: 8px;
 }
 .mech-key:active {
-    transform: translateY(8px);
     box-shadow: 0 0 0 #27272A, 0 0 5px rgba(0,0,0,0.5);
+    transform: translateY(6px);
 }
 .mech-key:active .key-face {
     transform: translateY(0);
 }
 @media (max-width: 768px) {
-    .contact-dock { right: 1rem; bottom: 1rem; gap: 1rem; }
+    .contact-dock {
+        right: 1rem;
+        bottom: 1rem;
+        gap: 0.75rem;
+    }
+}
+
     .mech-key { width: 50px; height: 50px; }
     .cookie-terminal { left: 1rem; bottom: 1rem; width: calc(100vw - 2rem); }
 }
