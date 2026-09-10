@@ -24,6 +24,7 @@
         <span class="emoji">☀️</span>
         <a href="https://solarcloud.lat" class="logo-text">Solar Cloud</a>
       </div>
+      <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</button>
       <div class="nav-links">
         <a href="https://solarcloud.lat">Home</a>
         <a href="https://panel.solarcloud.lat" class="nav-button">Panel</a>
@@ -233,7 +234,7 @@
         <a href="https://solarcloud.lat/privacidad.html" style="color:#A1A1AA; text-decoration:none; font-family:'Inter', sans-serif; font-size:0.9rem;">Política de Privacidad</a>
         <a href="https://solarcloud.lat/reembolsos.html" style="color:#A1A1AA; text-decoration:none; font-family:'Inter', sans-serif; font-size:0.9rem;">Política de Reembolsos</a>
     </div>
-    <p style="color:#FAFAFA; font-family:'Inter', sans-serif; font-weight:bold;">COPYRIGHT &copy; 2026 SOLAR CLOUD INFRASTRUCTURE</p>
+    <p style="color:#FAFAFA; font-family:'Inter', sans-serif; font-weight:bold;">COPYRIGHT &copy; <span id="year">2026</span> SOLAR CLOUD INFRASTRUCTURE</p>
     <p style="color:#A1A1AA; font-size:0.85rem; margin-top:0.5rem; font-family:'Inter', sans-serif;">SOPORTE TÉCNICO: <a href="mailto:support@solarcloud.lat" style="color:#FFB800; text-decoration:none;">support@solarcloud.lat</a></p>
   </footer>
 
@@ -305,5 +306,8 @@
       </form>
     </div>
   </div>
+  <div id="toast-container"></div>
+
+  <script id="dynamic-year">document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 </html>

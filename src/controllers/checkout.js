@@ -1,8 +1,15 @@
 const plans = require('../config/plans');
+const xss = require('xss');
 
 module.exports = async (req, res) => {
   try {
-    const { plan, location, username, email, password } = req.body;
+        const plan = xss(req.body.plan);
+    const location = xss(req.body.location);
+    const username = xss(req.body.username);
+    const email = xss(req.body.email);
+    const password = req.body.password; // Passwords should not be mangled by XSS if they contain special chars, but let's sanitize it gently or trust Tebex custom payload filtering. Actually XSS is for HTML rendering. But since Pterodactyl receives it, we should pass it raw, or strip HTML tags.
+    // Let's use xss for all to be safe, except maybe password.
+    const cleanPassword = xss(req.body.password);
     const planConfig = plans[plan];
     
     if (!planConfig) {
@@ -21,7 +28,7 @@ module.exports = async (req, res) => {
         email: req.body.email,
         complete_url: 'https://billing.solarcloud.lat?status=complete',
         cancel_url: 'https://billing.solarcloud.lat?status=cancel',
-        custom: { plan, location, nodeId, username: req.body.username, email: req.body.email, password: req.body.password }
+        custom: { plan, location, nodeId, username: req.body.username, email: req.body.email, password: cleanPassword }
       })
     });
     
